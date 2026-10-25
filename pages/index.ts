@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { ArticlePage } from "./articlePage";
+import { ArticlePage } from "./articlepage";
 
 export class articleFixture {
     articlePage: ArticlePage;

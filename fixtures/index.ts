@@ -10,4 +10,3 @@ export const test = base.extend<Fixtures>({
         await use(new articleFixture(page));
     }
 });
-

@@ -1,6 +1,5 @@
-import { expect, Locator, Page } from "@playwright/test";
-import { BasePage } from "./basePage";
-import { addAbortListener } from "node:events";
+import { Locator, Page } from "@playwright/test";
+import { BasePage } from "./basepage";
 
 export interface ArticleData {
     articletitle: string;
@@ -11,6 +10,8 @@ export interface ArticleData {
 
 export class ArticlePage extends BasePage {
     readonly newArticleLink: Locator;
+    readonly homeLink: Locator;
+    readonly popularTagsSidebar: Locator;
     readonly articleTitle: Locator;
     readonly articleAbout: Locator;
     readonly articleContent: Locator;
@@ -24,6 +25,8 @@ export class ArticlePage extends BasePage {
     constructor(page: Page) {
         super(page);
         this.newArticleLink = this.page.getByRole('link', { name: 'New Article' });
+        this.homeLink = this.page.getByRole('link', { name: 'Home' });
+        this.popularTagsSidebar = this.page.locator('.sidebar');
         this.articleTitle = this.page.getByPlaceholder('Article Title');
         this.articleAbout = this.page.getByPlaceholder("What's this article about?");
         this.articleContent = this.page.getByPlaceholder('Write your article (in markdown)');
@@ -51,10 +54,10 @@ export class ArticlePage extends BasePage {
         await this.articleHeading.waitFor({ state: 'visible' });
     }
 
-    async editArticle(data: Partial<ArticleData>) {
+    async editArticle(data: ArticleData) {
         await this.editArticleButton.click();
         await this.page.waitForURL(/editor/);
-        await this.articleTitle.waitFor({ state: 'visible' });
+        await this.page.waitForLoadState('networkidle');
         await this.articleTitle.fill(data.articletitle);
         await this.articleAbout.fill(data.description);
         await this.articleContent.fill(data.articleContent);
@@ -67,6 +70,5 @@ export class ArticlePage extends BasePage {
 
     async deleteArticle() {
         await this.deleteArticleButton.click();
-        await this.page.waitForURL('**/');
     }
 }

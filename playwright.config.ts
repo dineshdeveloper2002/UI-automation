@@ -31,7 +31,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
-
+    testIdAttribute: 'data-test',
   },
 
   /* Configure projects for major browsers */
@@ -44,16 +44,10 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: 'auth/userdata.json',
+        storageState: 'auth/userdata.json'
       },
-      dependencies: ['setup'],
-      testIgnore: ['**/auth*.ts', '**/steps/**']
-    }
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+      dependencies: ['setup']
+    },
 
     // {
     //   name: 'webkit',
