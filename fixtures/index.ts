@@ -8,5 +8,6 @@ type Fixtures = {
 export const test = base.extend<Fixtures>({
     article: async ({ page }, use) => {
         await use(new articleFixture(page));
-    },
+    }
 });
+

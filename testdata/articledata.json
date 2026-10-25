@@ -1,8 +1,22 @@
 {
-    "article": {
-        "articletitle": "Getting Started with Playwright Automation",
-        "description": "A comprehensive guide on setting up and running end-to-end tests with Playwright.",
-        "articleContent": "Playwright provides reliable end-to-end testing for modern web apps. It supports multiple tabs, multiple origins, and handles dynamic UI states seamlessly.",
-        "tags": "playwright"
+  "articles": [
+    {
+      "articletitle": "Latest Discoveries in Space Exploration",
+      "description": "Explore scientific discoveries about distant planets, galaxies, and the search for life beyond Earth.",
+      "articleContent": "Space exploration uses telescopes, satellites, and robotic missions to study the universe. Scientists investigate exoplanets, black holes, and planetary environments to understand how the universe formed and whether life may exist elsewhere.",
+      "tags": "space-science"
+    },
+    {
+      "articletitle": "The Science Behind Artificial Intelligence",
+      "description": "Understand how machine learning and neural networks are transforming scientific research.",
+      "articleContent": "Artificial intelligence uses algorithms and computational models to identify patterns, make predictions, and solve complex problems. Researchers apply AI in areas such as drug discovery, climate modeling, astronomy, and medical image analysis.",
+      "tags": "artificial-intelligence"
     }
+  ],
+  "editArticle": {
+    "articletitle": "Quantum Computing: A New Era of Science",
+    "description": "An updated overview of quantum bits, quantum algorithms, and emerging computing technologies.",
+    "articleContent": "Quantum computing uses quantum-mechanical principles such as superposition and entanglement to process information. Researchers are exploring applications in materials science, molecular simulation, and cryptography, although practical large-scale quantum computing remains challenging.",
+    "tags": "quantum-physics"
+  }
 }
