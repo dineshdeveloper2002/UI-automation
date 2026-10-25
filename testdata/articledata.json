@@ -1,0 +1,8 @@
+{
+    "article": {
+        "articletitle": "Getting Started with Playwright Automation",
+        "description": "A comprehensive guide on setting up and running end-to-end tests with Playwright.",
+        "articleContent": "Playwright provides reliable end-to-end testing for modern web apps. It supports multiple tabs, multiple origins, and handles dynamic UI states seamlessly.",
+        "tags": "playwright"
+    }
+}
