@@ -21,6 +21,7 @@ export class ArticlePage extends BasePage {
     readonly articleBody: Locator;
     readonly editArticleButton: Locator;
     readonly deleteArticleButton: Locator;
+    readonly articleTagsBlock: Locator
 
     constructor(page: Page) {
         super(page);
@@ -36,6 +37,7 @@ export class ArticlePage extends BasePage {
         this.articleBody = this.page.locator('.article-content');
         this.editArticleButton = this.page.getByRole('link', { name: 'Edit Article' }).first();
         this.deleteArticleButton = this.page.getByRole('button', { name: 'Delete Article' }).first();
+        this.articleTagsBlock = this.page.locator('.article-content ul li')
     }
 
     async navigateToPage(url: string) {

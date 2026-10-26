@@ -15,7 +15,7 @@ test.describe('Articles Suite', () => {
     });
 
     //add article
-    test('Add article', async ({ article }) => {
+    test('Add article', async ({ article, page }) => {
         const article1 = articleData.articles[0];
         const uniqueTitle = `${article1.articletitle} ${randomNumber}`;
         await article.articlePage.addNewArticle({
@@ -28,10 +28,15 @@ test.describe('Articles Suite', () => {
         await expect(article.articlePage.articleHeading).toHaveText(uniqueTitle);
         await expect(article.articlePage.articleBody).toBeVisible();
         await expect(article.articlePage.articleBody).toContainText(article1.articleContent);
+        await expect(article.articlePage.articleTagsBlock).toContainText(article1.tags)
+
+        //delete article
+        await article.articlePage.deleteArticle();
+        await expect(page).toHaveURL(new RegExp(process.env.BASE_URL || 'https://conduit.bondaracademy.com'));
     });
 
     //add and edit article
-    test('Edit article', async ({ article }) => {
+    test('Edit article', async ({ article, page }) => {
         const initialData = articleData.articles[1];
         const initialTitle = `${initialData.articletitle} ${randomNumber}`;
         await article.articlePage.addNewArticle({
@@ -56,6 +61,11 @@ test.describe('Articles Suite', () => {
         await expect(article.articlePage.articleBody).toBeVisible();
         await expect(article.articlePage.articleBody).toContainText(editData.articleContent);
         await expect(article.articlePage.editArticleButton).toBeVisible();
+        await expect(article.articlePage.articleTagsBlock).toContainText(editData.tags)
+
+        //delete article
+        await article.articlePage.deleteArticle();
+        await expect(page).toHaveURL(new RegExp(process.env.BASE_URL || 'https://conduit.bondaracademy.com'));
     });
 
     //add and delete article
